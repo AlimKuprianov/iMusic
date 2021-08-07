@@ -17,10 +17,10 @@ struct TrackModel {
 class SearchViewController: UITableViewController {
     
     
-    let array = [TrackModel(artistName: "Billie", musicName: "Eilish"),
-                 TrackModel(artistName: "Billie", musicName: "Eilish"),
-                 TrackModel(artistName: "Billie", musicName: "Eilish"),
-                 TrackModel(artistName: "Billie", musicName: "Eilish")]
+    let array = [TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
+                 TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
+                 TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
+                 TrackModel(artistName: "Billie Eilish", musicName: "bad guy")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,16 @@ class SearchViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
 
-        cell.textLabel?.text = "indexpath: \(indexPath)"
+        var cell2 = cell.defaultContentConfiguration()
+        cell2.image = #imageLiteral(resourceName: "Album Image 4")
+        cell2.imageProperties.maximumSize = CGSize(width: 60, height: 60)
+        cell2.imageProperties.cornerRadius = 0
+        let track = array[indexPath.row]
+        cell2.text = "\(track.artistName) \n\(track.musicName)"
+        cell2.textProperties.numberOfLines = 2
+
+        
+        cell.contentConfiguration = cell2
         return cell
     }
 }
