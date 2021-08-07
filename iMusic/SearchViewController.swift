@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 struct TrackModel {
     
@@ -37,6 +38,7 @@ class SearchViewController: UITableViewController {
     
     private func setupSearchBar() {
         let searchVC = UISearchController(searchResultsController: nil)
+        searchVC.searchBar.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchVC
     }
@@ -63,5 +65,24 @@ class SearchViewController: UITableViewController {
         
         cell.contentConfiguration = cell2
         return cell
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        let url = "https://itunes.apple.com/search?term=\(searchText)"
+        AF.request(url).responseData { responseData in
+            if let error = responseData.error {
+                print(error.localizedDescription)
+                
+                return
+            }
+            guard let data = responseData.data else { return }
+            let string = String(data: data, encoding: .utf8)
+            print(string ?? "")
+        }
     }
 }
