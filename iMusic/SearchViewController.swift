@@ -18,10 +18,8 @@ struct TrackModel {
 class SearchViewController: UITableViewController {
     
     
-    let array = [TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
-                 TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
-                 TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
-                 TrackModel(artistName: "Billie Eilish", musicName: "bad guy")]
+    var timer: Timer?
+    var array = [Track]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +37,7 @@ class SearchViewController: UITableViewController {
     private func setupSearchBar() {
         let searchVC = UISearchController(searchResultsController: nil)
         searchVC.searchBar.delegate = self
+        searchVC.obscuresBackgroundDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchVC
     }
@@ -59,7 +58,7 @@ class SearchViewController: UITableViewController {
         cell2.imageProperties.maximumSize = CGSize(width: 60, height: 60)
         cell2.imageProperties.cornerRadius = 0
         let track = array[indexPath.row]
-        cell2.text = "\(track.artistName) \n\(track.musicName)"
+        cell2.text = "\(track.artistName) \n\(track.trackName)"
         cell2.textProperties.numberOfLines = 2
 
         
@@ -71,18 +70,42 @@ class SearchViewController: UITableViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         print(searchText)
         
-        let url = "https://itunes.apple.com/search?term=\(searchText)"
-        AF.request(url).responseData { responseData in
-            if let error = responseData.error {
-                print(error.localizedDescription)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            
+            
+            let url = "https://itunes.apple.com/search"
+            let params = ["term":"\(searchText)",
+                          "media":"music",
+                          "limit":"200" ]
+            
+            AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseData { responseData in
                 
-                return
+                if let error = responseData.error {
+                    print(error.localizedDescription)
+                    
+                    return
+                }
+                guard let data = responseData.data else { return }
+                
+                let decoded = JSONDecoder()
+                
+                do {
+                    let objects = try decoded.decode(SearchResponse.self, from: data)
+                    print(objects)
+                    self.array = objects.results
+                    self.tableView.reloadData()
+                    
+                }
+                
+                catch let error {
+                    print(error.localizedDescription)
+                }
             }
-            guard let data = responseData.data else { return }
-            let string = String(data: data, encoding: .utf8)
-            print(string ?? "")
-        }
+        })
+       
     }
 }
