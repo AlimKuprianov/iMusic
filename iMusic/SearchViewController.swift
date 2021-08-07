@@ -21,20 +21,28 @@ class SearchViewController: UITableViewController {
                  TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
                  TrackModel(artistName: "Billie Eilish", musicName: "bad guy"),
                  TrackModel(artistName: "Billie Eilish", musicName: "bad guy")]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        let searchVC = UISearchController()
-        navigationItem.searchController = searchVC
+        
+        
+        setupSearchBar()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         view.backgroundColor = .white
+        
     }
-
+    
+    // MARK: - setupSearchBar()
+    
+    private func setupSearchBar() {
+        let searchVC = UISearchController(searchResultsController: nil)
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchVC
+    }
+    
     // MARK: - Table view data source
-
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
