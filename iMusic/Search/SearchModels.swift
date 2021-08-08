@@ -1,5 +1,5 @@
 //
-//  MusicModels.swift
+//  SearchModels.swift
 //  iMusic
 //
 //  Created by Алим Куприянов on 08.08.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Music {
+enum Search {
    
   enum Model {
     struct Request {

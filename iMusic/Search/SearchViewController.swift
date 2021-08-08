@@ -1,5 +1,5 @@
 //
-//  MusicViewController.swift
+//  SearchViewController.swift
 //  iMusic
 //
 //  Created by Алим Куприянов on 08.08.2021.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol MusicDisplayLogic: class {
-  func displayData(viewModel: Music.Model.ViewModel.ViewModelData)
+protocol SearchDisplayLogic: class {
+  func displayData(viewModel: Search.Model.ViewModel.ViewModelData)
 }
 
-class MusicViewController: UIViewController, MusicDisplayLogic {
+class SearchViewController: UIViewController, SearchDisplayLogic {
 
-  var interactor: MusicBusinessLogic?
-  var router: (NSObjectProtocol & MusicRoutingLogic)?
+  var interactor: SearchBusinessLogic?
+  var router: (NSObjectProtocol & SearchRoutingLogic)?
 
   // MARK: Object lifecycle
   
@@ -33,9 +33,9 @@ class MusicViewController: UIViewController, MusicDisplayLogic {
   
   private func setup() {
     let viewController        = self
-    let interactor            = MusicInteractor()
-    let presenter             = MusicPresenter()
-    let router                = MusicRouter()
+    let interactor            = SearchInteractor()
+    let presenter             = SearchPresenter()
+    let router                = SearchRouter()
     viewController.interactor = interactor
     viewController.router     = router
     interactor.presenter      = presenter
@@ -53,7 +53,7 @@ class MusicViewController: UIViewController, MusicDisplayLogic {
     super.viewDidLoad()
   }
   
-  func displayData(viewModel: Music.Model.ViewModel.ViewModelData) {
+  func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
 
   }
   

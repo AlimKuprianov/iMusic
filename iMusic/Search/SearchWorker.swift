@@ -1,5 +1,5 @@
 //
-//  MusicWorker.swift
+//  SearchWorker.swift
 //  iMusic
 //
 //  Created by Алим Куприянов on 08.08.2021.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class MusicService {
+class SearchService {
 
 }
