@@ -9,14 +9,25 @@
 import UIKit
 
 protocol SearchPresentationLogic {
-  func presentData(response: Search.Model.Response.ResponseType)
+    
+    func presentData(response: Search.Model.Response.ResponseType)
 }
 
+
 class SearchPresenter: SearchPresentationLogic {
-  weak var viewController: SearchDisplayLogic?
-  
-  func presentData(response: Search.Model.Response.ResponseType) {
-  
-  }
-  
+    
+    weak var viewController: SearchDisplayLogic?
+    
+    
+    func presentData(response: Search.Model.Response.ResponseType) {
+        
+        switch response {
+        case .some:
+            print("some")
+        case .presentTracks:
+            print("presentTracks")
+            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayTracks)
+        }
+        
+    }
 }
