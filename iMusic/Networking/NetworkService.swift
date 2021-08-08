@@ -12,7 +12,6 @@ class NetworkService {
     
     func fetchTracks(searchText: String, completion: @escaping (SearchResponse?) -> Void) {
         
-        
         let url = "https://itunes.apple.com/search"
         let params = ["term":"\(searchText)",
                       "media":"music",
