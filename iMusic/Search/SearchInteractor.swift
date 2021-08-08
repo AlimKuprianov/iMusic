@@ -14,6 +14,7 @@ protocol SearchBusinessLogic {
 
 class SearchInteractor: SearchBusinessLogic {
     
+    var networkService = NetworkService()
     var presenter: SearchPresentationLogic?
     var service: SearchService?
     
@@ -26,9 +27,11 @@ class SearchInteractor: SearchBusinessLogic {
         
         case .some:
             print("some")
-        case .getTracks:
+        case .getTracks(let searchTerm):
             print("getTacks")
-            presenter?.presentData(response: Search.Model.Response.ResponseType.presentTracks)
+            networkService.fetchTracks(searchText: searchTerm) { [weak self] searchResponse in
+                self?.presenter?.presentData(response: Search.Model.Response.ResponseType.presentTracks(response: searchResponse))
+            }
         }
         
     }

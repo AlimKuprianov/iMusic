@@ -23,6 +23,8 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     
     let searchController = UISearchController(searchResultsController: nil)
+    private var searchVM = SearchViewModel.init(cells: [])
+    private var timer: Timer?
     
     
   // MARK: - Setup
@@ -76,8 +78,10 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     case .some:
         print("vc some")
-    case .displayTracks:
+    case .displayTracks(let searchViewModel):
         print("vc tracks")
+        self.searchVM = searchViewModel
+        table.reloadData()
     }
   }
   
@@ -91,7 +95,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return searchVM.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,9 +103,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = table.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         
         var cell2 = cell.defaultContentConfiguration()
+        let cellViewModel = searchVM.cells[indexPath.row]
         cell2.image = #imageLiteral(resourceName: "Album Image 4")
         cell2.imageProperties.maximumSize = CGSize(width: 60, height: 60)
-        cell2.text = ""
+        cell2.text = "\(cellViewModel.artistName)\n\(cellViewModel.trackName)"
         cell2.textProperties.numberOfLines = 2
 
         cell.contentConfiguration = cell2
@@ -115,6 +120,10 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
-        interactor?.makeRequest(request: Search.Model.Request.RequestType.getTracks)
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+            self?.interactor?.makeRequest(request: Search.Model.Request.RequestType.getTracks(searchTerm: searchText))
+        })
     }
 }
