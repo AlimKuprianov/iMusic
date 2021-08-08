@@ -74,8 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				6E17396926BFCDA700B447E2 /* SearchViewController.storyboard */,
-				6E8BBF9926C01E5E0009884E /* TrackCell.xib */,
-				6E8BBF9B26C01E810009884E /* TrackCell.swift */,
+				6EEC79C826C0273200A08445 /* Cells */,
 				6E17395F26BFCAE400B447E2 /* SearchViewController.swift */,
 				6E17396026BFCAE400B447E2 /* SearchInteractor.swift */,
 				6E17395B26BFCAE400B447E2 /* SearchPresenter.swift */,
@@ -154,6 +153,15 @@
 				6E6FFE3D26BFC31E00B4945C /* NetworkService.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		6EEC79C826C0273200A08445 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6E8BBF9926C01E5E0009884E /* TrackCell.xib */,
+				6E8BBF9B26C01E810009884E /* TrackCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		88AF47BF2138F123F34E4725 /* Pods */ = {
