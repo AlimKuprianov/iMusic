@@ -147,6 +147,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return searchVM.cells.count > 0 ? 0 : 250
     }
     
+    
+// MARK: - didSelectRowAt
+
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cellViewModel = searchVM.cells[indexPath.row]
+        print(cellViewModel.trackName)
+        
+        let window = UIApplication.shared.keyWindow
+        let trackDetail = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
+        trackDetail.setElements(viewModel: cellViewModel)
+        window?.addSubview(trackDetail)
+    }
+    
 }
 
 

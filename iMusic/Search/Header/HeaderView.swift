@@ -9,8 +9,10 @@ import UIKit
 
 class HeaderView: UITableViewHeaderFooterView {
     
+// MARK: - static let
+
     static let reuseId = "Header"
-    
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -43,6 +45,9 @@ class HeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
+    
+// MARK: - setup UI Elements
+
     private func setupLabel() {
         addSubview(myLabel)
         myLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
