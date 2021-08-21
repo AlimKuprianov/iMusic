@@ -19,7 +19,6 @@
 		6E3D9FA526BEB99800AD19EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D9FA426BEB99800AD19EC /* SceneDelegate.swift */; };
 		6E3D9FA726BEB99800AD19EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D9FA626BEB99800AD19EC /* ViewController.swift */; };
 		6E3D9FAA26BEB99800AD19EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D9FA826BEB99800AD19EC /* Main.storyboard */; };
-		6E3D9FAC26BEB99C00AD19EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D9FAB26BEB99C00AD19EC /* Assets.xcassets */; };
 		6E3D9FAF26BEB99C00AD19EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D9FAD26BEB99C00AD19EC /* LaunchScreen.storyboard */; };
 		6E3D9FB726BEBD1100AD19EC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D9FB626BEBD1100AD19EC /* TabBarController.swift */; };
 		6E3D9FB926BEBD4800AD19EC /* SearchMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D9FB826BEBD4800AD19EC /* SearchMusicViewController.swift */; };
@@ -28,6 +27,9 @@
 		6E8BBF9A26C01E5E0009884E /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E8BBF9926C01E5E0009884E /* TrackCell.xib */; };
 		6E8BBF9C26C01E810009884E /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8BBF9B26C01E810009884E /* TrackCell.swift */; };
 		A68F949F9E77AFA91B665374 /* Pods_iMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2707E7FCBC3600C44BA1786 /* Pods_iMusic.framework */; };
+		EE01AA7F26D1757500713F63 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE01AA7E26D1757500713F63 /* FooterView.swift */; };
+		EE01AA8A26D17DF300713F63 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE01AA8926D17DF300713F63 /* HeaderView.swift */; };
+		EE01AA8F26D1879900713F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE01AA8E26D1879900713F63 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +48,6 @@
 		6E3D9FA426BEB99800AD19EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6E3D9FA626BEB99800AD19EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6E3D9FA926BEB99800AD19EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6E3D9FAB26BEB99C00AD19EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E3D9FAE26BEB99C00AD19EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E3D9FB026BEB99C00AD19EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E3D9FB626BEBD1100AD19EC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		6E8BBF9926C01E5E0009884E /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		6E8BBF9B26C01E810009884E /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		A2707E7FCBC3600C44BA1786 /* Pods_iMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE01AA7E26D1757500713F63 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		EE01AA8926D17DF300713F63 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		EE01AA8E26D1879900713F63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 		6E17394C26BFC96400B447E2 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				EE01AA8526D17DC100713F63 /* Header */,
+				EE01AA7D26D1756400713F63 /* FooterView */,
 				6E17396926BFCDA700B447E2 /* SearchViewController.storyboard */,
 				6EEC79C826C0273200A08445 /* Cells */,
 				6E17395F26BFCAE400B447E2 /* SearchViewController.swift */,
@@ -132,7 +138,7 @@
 				6E6FFE4026BFC73F00B4945C /* Networking */,
 				6E6FFE3F26BFC73600B4945C /* Model */,
 				6E3D9FA826BEB99800AD19EC /* Main.storyboard */,
-				6E3D9FAB26BEB99C00AD19EC /* Assets.xcassets */,
+				EE01AA8E26D1879900713F63 /* Assets.xcassets */,
 				6E3D9FAD26BEB99C00AD19EC /* LaunchScreen.storyboard */,
 				6E3D9FB026BEB99C00AD19EC /* Info.plist */,
 			);
@@ -171,6 +177,22 @@
 				328D0AC04A8D24F726C90EBF /* Pods-iMusic.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EE01AA7D26D1756400713F63 /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				EE01AA7E26D1757500713F63 /* FooterView.swift */,
+			);
+			path = FooterView;
+			sourceTree = "<group>";
+		};
+		EE01AA8526D17DC100713F63 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				EE01AA8926D17DF300713F63 /* HeaderView.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +256,9 @@
 			files = (
 				6E3D9FAF26BEB99C00AD19EC /* LaunchScreen.storyboard in Resources */,
 				6E8BBF9A26C01E5E0009884E /* TrackCell.xib in Resources */,
-				6E3D9FAC26BEB99C00AD19EC /* Assets.xcassets in Resources */,
 				6E17396A26BFCDA700B447E2 /* SearchViewController.storyboard in Resources */,
 				6E3D9FAA26BEB99800AD19EC /* Main.storyboard in Resources */,
+				EE01AA8F26D1879900713F63 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +316,8 @@
 				6E5775DD26BF0167001732F6 /* SearchResponse.swift in Sources */,
 				6E17396726BFCAE400B447E2 /* SearchInteractor.swift in Sources */,
 				6E3D9FB726BEBD1100AD19EC /* TabBarController.swift in Sources */,
+				EE01AA7F26D1757500713F63 /* FooterView.swift in Sources */,
+				EE01AA8A26D17DF300713F63 /* HeaderView.swift in Sources */,
 				6E8BBF9C26C01E810009884E /* TrackCell.swift in Sources */,
 				6E3D9FA326BEB99800AD19EC /* AppDelegate.swift in Sources */,
 				6E17396326BFCAE400B447E2 /* SearchWorker.swift in Sources */,
@@ -380,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -435,7 +459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

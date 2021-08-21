@@ -43,7 +43,6 @@ class TrackCell: UITableViewCell {
         collectionNameLabel.text = trackViewModel.collectionName
         
         guard let url = URL(string: trackViewModel.iconURLString ?? "") else { return }
-        
         iconImageView.sd_setImage(with: url, completed: nil)
     }
 

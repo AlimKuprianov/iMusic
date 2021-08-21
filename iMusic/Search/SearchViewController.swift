@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - SearchDisplayLogic
+
 protocol SearchDisplayLogic: class {
   func displayData(viewModel: Search.Model.ViewModel.ViewModelData)
 }
@@ -25,6 +27,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     let searchController = UISearchController(searchResultsController: nil)
     private var searchVM = SearchViewModel.init(cells: [])
     private var timer: Timer?
+    private lazy var footerView = FooterView()
     
     
   // MARK: - Setup
@@ -57,15 +60,23 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         view.backgroundColor = .systemBackground
     }
     
+    
+    // MARK: - setupTableView()
+
     private func setupTableView() {
         
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
         let nib = UINib(nibName: "TrackCell", bundle: nil)
         table.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
+        
+        table.tableFooterView = footerView
+        table.register(HeaderView.self, forHeaderFooterViewReuseIdentifier: HeaderView.reuseId)
     }
     
     
+    // MARK: - setupSearchBar()
+
     private func setupSearchBar() {
         let searchVC = UISearchController(searchResultsController: nil)
         searchVC.searchBar.delegate = self
@@ -80,12 +91,14 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
 
     switch viewModel {
     
-    case .some:
-        print("vc some")
+   
     case .displayTracks(let searchViewModel):
         print("vc tracks")
         self.searchVM = searchViewModel
         table.reloadData()
+        footerView.hideLoader()
+    case .displayFooterView:
+        footerView.showLoader()
     }
   }
   
@@ -107,7 +120,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = table.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
         
         let cellViewModel = searchVM.cells[indexPath.row]
-        cell.iconImageView.backgroundColor = .red
+        cell.iconImageView.backgroundColor = .gray
+        cell.layer.cornerRadius = 5
         cell.set(trackViewModel: cellViewModel)
         
 
@@ -119,7 +133,24 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return 84
     }
     
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     
+        let view = table.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.reuseId) as? HeaderView
+        view?.myLabel.text = "Please search your music!"
+        view?.myImage.image = #imageLiteral(resourceName: "undraw_happy_music_g6wc")
+     
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return searchVM.cells.count > 0 ? 0 : 250
+    }
+    
 }
+
+
+// MARK: - UISearchBarDelegate
 
 
 extension SearchViewController: UISearchBarDelegate {
