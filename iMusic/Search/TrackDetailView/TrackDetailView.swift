@@ -48,11 +48,23 @@ class TrackDetailView: UIView {
     func setElements(viewModel: SearchViewModel.Cell) {
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
-        
+        playTrack(previewURL: viewModel.previewStringURL)
         let string600 = viewModel.iconURLString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
     }
+    
+    
+    private func playTrack(previewURL: String?) {
+        
+        print("playTrack")
+        guard let url = URL(string: previewURL ?? "") else { return }
+        let playerItem = AVPlayerItem(url: url)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
+    }
+    
+    
     
 //MARK: - IBActions
 
