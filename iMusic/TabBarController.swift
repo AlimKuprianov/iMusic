@@ -12,7 +12,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         tabBar.tintColor = #colorLiteral(red: 0.9230089188, green: 0.2888513207, blue: 0.376057148, alpha: 1)
         
         let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
