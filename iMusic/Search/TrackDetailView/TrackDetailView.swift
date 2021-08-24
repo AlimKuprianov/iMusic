@@ -98,7 +98,17 @@ class TrackDetailView: UIView {
             let durationTime = self?.player.currentItem?.duration
             let currentDurationText = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()
             self?.durationTitle.text = "\(currentDurationText)"
+            self?.updateCurrentTimeSlider()
         }
+    }
+    
+    private func updateCurrentTimeSlider() {
+        
+        let currentTimeInSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationInSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 2))
+        
+        let persent = currentTimeInSeconds / durationInSeconds
+        self.currentTimeSlider.value = Float(persent)
     }
     
     
@@ -127,10 +137,19 @@ class TrackDetailView: UIView {
         self.removeFromSuperview()
     }
     @IBAction func handleTimerSlider(_ sender: Any) {
+        let persent = currentTimeSlider.value
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(persent) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+        player.seek(to: seekTime)
     }
+    
+    
     @IBAction func handleVollumeSlider(_ sender: Any) {
         player.volume = volumeSlider.value
     }
+    
     @IBAction func previousTrack(_ sender: Any) {
     }
     @IBAction func nextTrack(_ sender: Any) {
