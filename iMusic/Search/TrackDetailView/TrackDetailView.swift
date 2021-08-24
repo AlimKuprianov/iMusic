@@ -42,9 +42,9 @@ class TrackDetailView: UIView {
         trackImageView.backgroundColor = .red
         trackImageView.layer.cornerRadius = 5
         let  scale: CGFloat = 0.8
-        trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
     }
-    
+        
     
 //MARK: - setElements()
 
@@ -55,6 +55,7 @@ class TrackDetailView: UIView {
         let string600 = viewModel.iconURLString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
+        monitorStartTime()
     }
     
     
@@ -65,6 +66,37 @@ class TrackDetailView: UIView {
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         player.play()
+    }
+    
+    
+//MARK: - monitorStartTime()
+
+    
+    private func monitorStartTime() {
+        
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.enlargeImageView()
+        }
+        
+    }
+    
+    
+//MARK: - Animations
+    
+    private func enlargeImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.trackImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    private func reduseImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            
+            let  scale: CGFloat = 0.8
+            self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: nil)
     }
     
     
@@ -88,10 +120,12 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+            enlargeImageView()
         }
         else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "Triangle"), for: .normal)
+            reduseImageView()
         }
     }
     
