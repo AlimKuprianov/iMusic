@@ -40,6 +40,9 @@ class TrackDetailView: UIView {
         super.awakeFromNib()
     
         trackImageView.backgroundColor = .red
+        trackImageView.layer.cornerRadius = 5
+        let  scale: CGFloat = 0.8
+        trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
     }
     
     
@@ -74,6 +77,7 @@ class TrackDetailView: UIView {
     @IBAction func handleTimerSlider(_ sender: Any) {
     }
     @IBAction func handleVollumeSlider(_ sender: Any) {
+        player.volume = volumeSlider.value
     }
     @IBAction func previousTrack(_ sender: Any) {
     }
@@ -82,11 +86,11 @@ class TrackDetailView: UIView {
     @IBAction func playPauseAction(_ sender: Any) {
         
         if player.timeControlStatus == .paused {
-            player.pause()
+            player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
         }
         else {
-            player.play()
+            player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "Triangle"), for: .normal)
         }
     }
