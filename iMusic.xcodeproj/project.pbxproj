@@ -32,6 +32,7 @@
 		EE01AA8F26D1879900713F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE01AA8E26D1879900713F63 /* Assets.xcassets */; };
 		EE01AA9526D199D900713F63 /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE01AA9426D199D900713F63 /* TrackDetailView.xib */; };
 		EE01AA9826D199F000713F63 /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE01AA9726D199F000713F63 /* TrackDetailView.swift */; };
+		EE2DB1F826D5589400D09B3E /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2DB1F726D5589400D09B3E /* CMTime + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		EE01AA8E26D1879900713F63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE01AA9426D199D900713F63 /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		EE01AA9726D199F000713F63 /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
+		EE2DB1F726D5589400D09B3E /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				6E17396B26BFD0B000B447E2 /* UIVC + Storyboard.swift */,
+				EE2DB1F726D5589400D09B3E /* CMTime + Extension.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				EE01AA7F26D1757500713F63 /* FooterView.swift in Sources */,
 				EE01AA8A26D17DF300713F63 /* HeaderView.swift in Sources */,
 				6E8BBF9C26C01E810009884E /* TrackCell.swift in Sources */,
+				EE2DB1F826D5589400D09B3E /* CMTime + Extension.swift in Sources */,
 				6E3D9FA326BEB99800AD19EC /* AppDelegate.swift in Sources */,
 				EE01AA9826D199F000713F63 /* TrackDetailView.swift in Sources */,
 				6E17396326BFCAE400B447E2 /* SearchWorker.swift in Sources */,
