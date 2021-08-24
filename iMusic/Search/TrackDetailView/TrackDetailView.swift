@@ -57,7 +57,7 @@ class TrackDetailView: UIView {
     
     private func playTrack(previewURL: String?) {
         
-        print("playTrack")
+       // print("playTrack")
         guard let url = URL(string: previewURL ?? "") else { return }
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
@@ -80,6 +80,15 @@ class TrackDetailView: UIView {
     @IBAction func nextTrack(_ sender: Any) {
     }
     @IBAction func playPauseAction(_ sender: Any) {
+        
+        if player.timeControlStatus == .paused {
+            player.pause()
+            playPauseButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+        }
+        else {
+            player.play()
+            playPauseButton.setImage(#imageLiteral(resourceName: "Triangle"), for: .normal)
+        }
     }
     
 }

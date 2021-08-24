@@ -134,6 +134,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    // MARK: - viewForHeaderInSection
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
      
         let view = table.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.reuseId) as? HeaderView
