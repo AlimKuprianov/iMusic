@@ -58,7 +58,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         setupTableView()
         
         view.backgroundColor = .systemBackground
-        searchBar(searchController.searchBar, textDidChange: "Taylor Swift")
+       // searchBar(searchController.searchBar, textDidChange: "Taylor Swift")
     }
     
     
