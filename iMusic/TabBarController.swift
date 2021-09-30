@@ -23,6 +23,9 @@ class TabBarController: UITabBarController {
         ]
     }
     
+    private func addHowToBindData() {
+        print("How to bind data")
+    }
     
     private func createVC(rootViewController: UIViewController, image: UIImage, title: String) -> UIViewController {
         
