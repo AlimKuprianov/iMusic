@@ -61,6 +61,8 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
        // searchBar(searchController.searchBar, textDidChange: "Taylor Swift")
     }
     
+ 
+    
     
     // MARK: - setupTableView()
 
@@ -141,7 +143,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
      
         let view = table.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.reuseId) as? HeaderView
         view?.myLabel.text = "Please search your music!"
-        view?.myImage.image = #imageLiteral(resourceName: "undraw_happy_music_g6wc")
+        view?.myImage.image = #imageLiteral(resourceName: "undraw_compose_music_ovo2")
      
         return view
     }

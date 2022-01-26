@@ -88,12 +88,7 @@
 				EE01AA7D26D1756400713F63 /* FooterView */,
 				6E17396926BFCDA700B447E2 /* SearchViewController.storyboard */,
 				6EEC79C826C0273200A08445 /* Cells */,
-				6E17395F26BFCAE400B447E2 /* SearchViewController.swift */,
-				6E17396026BFCAE400B447E2 /* SearchInteractor.swift */,
-				6E17395B26BFCAE400B447E2 /* SearchPresenter.swift */,
-				6E17395E26BFCAE400B447E2 /* SearchModels.swift */,
-				6E17395C26BFCAE400B447E2 /* SearchWorker.swift */,
-				6E17395D26BFCAE400B447E2 /* SearchRouter.swift */,
+				EEBDA9432731A7A700276962 /* Module */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -210,6 +205,19 @@
 				EE01AA9726D199F000713F63 /* TrackDetailView.swift */,
 			);
 			path = TrackDetailView;
+			sourceTree = "<group>";
+		};
+		EEBDA9432731A7A700276962 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				6E17395F26BFCAE400B447E2 /* SearchViewController.swift */,
+				6E17396026BFCAE400B447E2 /* SearchInteractor.swift */,
+				6E17395B26BFCAE400B447E2 /* SearchPresenter.swift */,
+				6E17395E26BFCAE400B447E2 /* SearchModels.swift */,
+				6E17395C26BFCAE400B447E2 /* SearchWorker.swift */,
+				6E17395D26BFCAE400B447E2 /* SearchRouter.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

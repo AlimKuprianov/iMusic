@@ -46,5 +46,10 @@ class TrackCell: UITableViewCell {
         iconImageView.sd_setImage(with: url, completed: nil)
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.iconImageView.layer.cornerRadius = self.iconImageView.frame.width / 2
+        self.iconImageView.clipsToBounds = true
+    }
    
 }
